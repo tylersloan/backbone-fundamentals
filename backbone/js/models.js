@@ -4,3 +4,8 @@ var Property = Backbone.Model.extend({
         this.save();
     }
 });
+
+/* Property Collection */
+Property.Collection = Backbone.Collection.extend({
+    model: Property
+});

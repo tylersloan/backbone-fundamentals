@@ -6,16 +6,21 @@
 </head>
 <body>
 
+    <h1>Realtor BB</h1>
+    <div id="content"></div>
 
+    <script src="vendor/underscore.js"></script>
+    <script src="vendor/backbone.js"></script>
+    <script src="vendor/jquery-1.11.3.min.js"></script>
 
-<script src="vendor/underscore.js"></script>
-<script src="vendor/backbone.js"></script>
-<script src="vendor/jquery-1.11.3.min.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/app.js"></script>
 
-<script src="js/router.js"></script>
-<script src="js/models.js"></script>
-<script src="js/views.js"></script>
-<script src="js/app.js"></script>
+    <script>
+        boot(document.getElementById("content"));
+    </script>
 
 </body>
 </html>
