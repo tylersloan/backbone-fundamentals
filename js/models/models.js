@@ -13,3 +13,6 @@ var newTodo = new Todo();
 var anotherTodo = new Todo({
     title: 'Todo item here'
 });
+
+console.log(newTodo.get('title'));
+console.log(anotherTodo.get('title'));
