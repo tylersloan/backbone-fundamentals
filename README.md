@@ -1,2 +1,2 @@
-# choosing-js-framework-book-projects
-Following along this book to get a feel for JS frameworks (Backbone, Angular, and Ember). http://bleedingedgepress.com/our-books/choosing-javascript-framework/
+# Backbone Fundamentals
+I need to learn Backbone, again. At least a little bit. Going to follow along with this book. Don't know if I'll make it all the way through or not–that's not the point. Just need to get an understanding before diving in or moving onto a different framework or library.
