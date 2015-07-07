@@ -7,12 +7,65 @@
         <link rel="stylesheet" href="css/base.css">
     </head>
     <body>
-        <script type="text/template" id="item-template"></script>
-        <script type="text/template" id="stats-template"></script>
+
+        <section id="todoapp">
+            <header id="header">
+                <h1>todos</h1>
+                <input type="text" id="new-todo" placeholder="What needs to be done?" autofocus/>
+            </header>
+            <section id="main">
+                <input type="checkbox" id="toggle-all"/>
+                <label for="toggle-all">Mark ass as complete</label>
+                <ul id="todo-list"></ul>
+            </section>
+            <footer id="footer"></footer>
+            <div id="info">
+                <p>Double-click to edit a todo</p>
+                <p>Written by <a href="https://github.com/addyosmani">Addy Osmani</a></p>
+                <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+            </div>
+        </section>
+
+
+        <!-- Item Template -->
+        <script type="text/template" id="item-template">
+            <div class="view">
+                <input type="checkbox" class="toggle" <%= completed ? 'checked' : '' %>/>
+                <label><%= title %></label>
+                <button class="destroy"></button>
+            </div>
+            <input class="edit" value="<%= title %>">
+        </script>
+
+        <!-- Stats Template -->
+        <script type="text/template" id="stats-template">
+            <span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
+            <ul id="filters">
+                <li>
+                    <a class="selected" href="#/">All</a>
+                </li>
+                <li>
+                    <a href="#/active">Active</a>
+                </li>
+                <li>
+                    <a href="#/completed">Completed</a>
+                </li>
+            </ul>
+            <% if (completed) { %>
+            <button id="clear-completed">Clear completed (<%= completed %>)</button>
+            <% } %>
+        </script>
+
+
+        <!-- Dependencies -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
         <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+
+        <!-- Extra Libraries -->
         <script src="js/lib/backbone.localStorage-min.js"></script>
+
+        <!-- Backbone Fundamentals -->
         <script src="js/models/todo.js"></script>
         <script src="js/collections/todos.js"></script>
         <script src="js/views/todos.js"></script>
