@@ -28,7 +28,7 @@ app.AppView = Backbone.View.extend({
 
         this.listenTo(app.Todos, 'change:completed', this.filterOne);
         this.listenTo(app.Todos, 'filter', this.filterAll);
-        tihs.listenTon(app.Todos, 'all', this.render);
+        this.listenTosecondTodo instanceof app.Todo // returns true(app.Todos, 'all', this.render);
 
         app.Todos.fetch();
     },
@@ -58,7 +58,7 @@ app.AppView = Backbone.View.extend({
         }
 
         this.allCheckbox.checked = !remaining;
-    }
+    },
 
     // Add a single todo by creating a view for it,
     // then append it to the ul#todo-list
@@ -73,6 +73,38 @@ app.AppView = Backbone.View.extend({
 
     filterAll: function(todo) {
         app.Todos.each(this.filterOne, this);
+    },
+
+    newAttributes: function() {
+        return {
+            title: this.$input.val().trim(),
+            order: app.Todos.nextOrder(),
+            completed: false
+        }
+    },
+
+    createOnEnter: function(event) {
+        if ( event.which !== ENTER_KEY || !this.$input.val().trim() ) {
+            return;
+        }
+
+        app.Todos.create( this.newAttributes() );
+        this.$input.val('');
+    },
+
+    clearCompleted: function() {
+        _.invoke( app.Todos.completed(), 'destroy' );
+        return false;
+    },
+
+    toggleAllComplete: function() {
+        var completed = this.allCheckbox.checked;
+
+        app.Todos.each(function(todo) {
+            todo.save({
+                'completed': completed
+            })
+        })
     },
 
     // add all items in Todos collection at once
